@@ -1,6 +1,6 @@
 {
-  "name": "kiix",
-  "description": "kiix wrapper for express framework",
+  "name": "kiin",
+  "description": "kiin wrapper for express framework",
   "version": "0.0.1",
   "author": {
     "name": "kritinline",
@@ -19,7 +19,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "kiix": "./bin/cli.js"
+    "kiin": "./bin/cli.js"
   },
   "dependencies": {
     "compression": "^1.7.3",
@@ -44,7 +44,6 @@
     "redis": "*",
     "swig": "*",
     "ws": "2.3.0",
-
     "mobx": "^2.7.0",
     "mobx-react": "^4.0.4",
     "@zeit/next-less": "^1.0.1",
