@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.id.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ#@');]]></content>
+    <tabTrigger>fidcharacters</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.id.characters()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[.populate({ 
+  path: '${1:populate}',
+  match: {${2}},
+  select: '${3:name -_id}',
+  options: { limit: 5 }
+});]]></content>
+    <tabTrigger>populate</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.populate()</description>
+</snippet>
+
+
+
+

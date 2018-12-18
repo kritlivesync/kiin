@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[R.set("${1:key}",${1:data});]]></content>
+    <tabTrigger>redisset</tabTrigger>
+    <scope>source.js</scope>
+    <description>redis.set()</description>
+</snippet>
+
+
+
+

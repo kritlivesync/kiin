@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[req.session.destroy(() => {
+	${1}
+});]]></content>
+    <tabTrigger>isessiondestroy</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.session.destroy()</description>
+</snippet>

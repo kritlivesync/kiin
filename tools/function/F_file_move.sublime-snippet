@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.moveSync(${1:'/tmp/somefile'}, ${2:'/path/file'}, { overwrite: true });]]></content>
+    <tabTrigger>ffilemove</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.move</description>
+</snippet>
+

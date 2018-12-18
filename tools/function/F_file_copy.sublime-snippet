@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.copySync(${1:'/tmp/somefile'}, ${2:'/path/file'});]]></content>
+    <tabTrigger>ffilecopy</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.copy</description>
+</snippet>
+

@@ -1,0 +1,67 @@
+<snippet>
+	<content><![CDATA[import React from 'react'
+import { observer, inject } from 'mobx-react';
+import { LayoutMain } from '@layouts';
+import { Router, Link } from '@components';
+import { Breadcrumb, Icon, Button, Row, Col} from 'antd';
+
+@inject("app")
+@observer
+export default class ${1:Name} extends React.Component {
+
+  state = {
+    data: [],
+    loading: false,
+  };
+
+  getInitialProps({ query: { id } }){
+    return { ${1:Name}Id: id }
+  }
+
+  componentDidMount() {
+    this.fetch({id:this.props.${1:Name}Id);
+  }
+
+  fetch(params = {}) {
+    console.log('params:', params);
+    this.setState({ loading: true });
+    fetch('${2:Url}')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ loading: false });
+      });
+  }
+
+  onClick() {
+    Router.push('/')
+  }
+
+  render(){
+    return (
+      <LayoutMain
+          page="/${2:Url}" 
+          title="${1:Name}" 
+          description="${1:Name} description"
+          keywork="${1:Name} keyword"
+      >
+        <div class="uk-grid">
+            <div class="uk-width-1-2">
+              <h1>${1:NAME}</h1>
+            </div>
+            <div class="uk-width-1-2">
+                  <Button type="primary" onClick={this.onClick}>Link</Button>
+                  <br />
+                  <Link href={`/to?id=\${${1:Name}Id}`} as={`/to/\${${1:Name}Id}`}>
+                    <Button type="primary">Link</Button>
+                  </Link>
+            </div>
+        </div>
+      </LayoutMain>
+    )
+  }
+}
+]]></content>
+    <tabTrigger>npagedetail</tabTrigger>
+    <scope>source.js</scope>
+    <description>react pageDetail</description>
+</snippet>

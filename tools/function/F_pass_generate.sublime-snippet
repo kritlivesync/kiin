@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.pass.generate(${1:password});]]></content>
+    <tabTrigger>fpassgenerate</tabTrigger>
+    <scope>source.js</scope>
+    <description>var object_salt_hash = F.pass.generate()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[F.mail(${1:to@email.com},${2:title},${3:html},async(status) => {
+	${4}
+});]]></content>
+    <tabTrigger>fmail</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.mail()</description>
+</snippet>
+
+
+
+

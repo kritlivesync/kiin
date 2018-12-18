@@ -1,0 +1,73 @@
+<snippet>
+	<content><![CDATA[import React from 'react'
+import { observer, inject } from 'mobx-react';
+import { LayoutMain } from '@layouts';
+import { Router, Link } from '@components';
+import { Row, Col, Form, Input, InputNumber, Select, Radio, Button, Upload, Icon, Divider } from 'antd';
+
+
+@inject("app")
+@observer
+class ${1:Name}Add extends React.Component {
+
+  state = {
+    data: [],
+    loading: false,
+  };
+
+  constructor(props){
+    super(props);
+  }
+  
+  getInitialProps({ query: { id } }) {
+    return { ${1:Name}Id: id }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
+  };
+
+  render() {
+    const { getFieldDecorator } = this.props.form;
+    return (
+		<LayoutMain
+			page="/${2:Url}" 
+			title="${2:Url} View" 
+			description="${2:Url} view description"
+			keywork="${2:Url} view keyword"
+		>
+			<Form onSubmit={this.handleSubmit}>
+				<Row>
+					<Col span={24}>
+						<Form.Item label={'Label'}>
+						{
+							getFieldDecorator('key',{'initialValue': ''})(
+								<Input placeholder={''} />
+							)
+						}
+						</Form.Item>
+					</Col>
+				</Row>
+				<Divider />
+				<Form.Item>
+					<Button type="primary" htmlType="submit">
+						Submit Add
+					</Button>
+				</Form.Item>
+			</Form>
+	  	</LayoutMain>
+    );
+  }
+}
+
+export default Form.create()(${1:Name}Add);
+]]></content>
+    <tabTrigger>npageform</tabTrigger>
+    <scope>source.js</scope>
+    <description>react pageForm</description>
+</snippet>

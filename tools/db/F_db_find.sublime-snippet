@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.find({${2}}, null, {limit: ${3:10}, sort: {${4:_id}: -1}, skip: 0});]]></content>
+    <tabTrigger>dbfind</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.find()</description>
+</snippet>
+
+
+
+

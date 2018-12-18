@@ -1,0 +1,10 @@
+<snippet>
+    <content><![CDATA[${1:ServiceName}.${2:actionName} = async() => {
+        ${3}
+        return 
+}
+]]></content>
+    <tabTrigger>service.action</tabTrigger>
+    <scope>source.js</scope>
+    <description>new.service_action()</description>
+</snippet>

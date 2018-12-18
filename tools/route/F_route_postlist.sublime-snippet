@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[.post(async(req, res) => {
+    var
+        data, options,
+        input = req.body,
+        current = +input.page || 1
+        conditions = {},
+        page = {
+            current: current,
+            numRange: 4,
+            size: 10
+        };
+
+
+        options = {
+            limit: page.size,
+            sort: {_id: -1},
+            skip: (page.current - 1) * page.size
+        };
+
+        data = await D.${1:arg}.find(conditions, null, options); //.populate('db filed');
+
+        page.rowCount = await D.${1:arg}.count(conditions);
+        page.pageCount = Math.ceil(page.rowCount / page.size);
+
+        ${2}
+
+        res.json({
+            status: true,
+            data: {
+                data: data,
+                info: page
+            }
+        });
+})]]></content>
+    <tabTrigger>postlist</tabTrigger>
+    <scope>source.js</scope>
+    <description>route.postlist()</description>
+</snippet>
+
+
+
+

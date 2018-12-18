@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[.route('${1:/}')]]></content>
+	<tabTrigger>route</tabTrigger>
+	<scope>source.js</scope>
+	<description>route.route()</description>
+</snippet>
+
+
+
+

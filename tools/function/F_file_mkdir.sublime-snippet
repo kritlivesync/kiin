@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.ensureDirSync(${1:'/path/to/dir'});]]></content>
+    <tabTrigger>ffilemkdir</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.mkdir (mkdir -p)</description>
+</snippet>
+

@@ -1,0 +1,20 @@
+<snippet>
+    <content><![CDATA[.get(async(req, res) => {
+    var query = {
+        ${2:where}
+    }
+
+    var data = await D.${1:arg}.findOne(query); //.populate('db filed');
+
+    ${3}
+
+    res.json({
+        status: true,
+        data: data
+    });
+})]]></content>
+    <tabTrigger>get</tabTrigger>
+    <scope>source.js</scope>
+    <description>route.get()</description>
+</snippet>
+

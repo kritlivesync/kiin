@@ -1,0 +1,16 @@
+<snippet>
+  <content><![CDATA[module.exports = async(app) => {
+
+  app 
+    .route('${1:/}')
+    ${2}
+
+};]]></content>
+	<tabTrigger>new:route</tabTrigger>
+	<scope>source.js</scope>
+	<description>new.route()</description>
+</snippet>
+
+
+
+

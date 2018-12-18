@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.readJsonSync(${1:'/package.json'}, { throws: false });]]></content>
+    <tabTrigger>ffilereadjson</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.readJson</description>
+</snippet>
+

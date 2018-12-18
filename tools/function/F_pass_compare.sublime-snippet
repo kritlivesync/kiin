@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.pass.compare(${1:\{'salt':'','hash':''\}},${2:password});]]></content>
+    <tabTrigger>fpasscomparee</tabTrigger>
+    <scope>source.js</scope>
+    <description>var true_false = F.pass.compare({'salt':'','hash':''},password)</description>
+</snippet>
+

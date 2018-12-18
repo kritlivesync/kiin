@@ -1,0 +1,43 @@
+<snippet>
+	<content><![CDATA[.get(async(req, res) => {
+    var
+        data, options,
+        input = req.query,
+        current = +input.page || 1
+        conditions = {},
+        page = {
+            current: current,
+            numRange: 4,
+            size: 10
+        };
+
+
+        options = {
+            limit: page.size,
+            sort: {_id: -1},
+            skip: (page.current - 1) * page.size
+        };
+
+        data = await D.${1:arg}.find(conditions, null, options); //.populate('db filed');
+
+        page.rowCount = await D.${1:arg}.count(conditions);
+        page.pageCount = Math.ceil(page.rowCount / page.size);
+
+        ${2}
+
+        res.json({
+            status: true,
+            data: {
+                data: data,
+                info: page
+            }
+        });
+})]]></content>
+    <tabTrigger>getlist</tabTrigger>
+    <scope>source.js</scope>
+    <description>route.getlist()</description>
+</snippet>
+
+
+
+

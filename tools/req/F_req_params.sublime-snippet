@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[req.params.${1:key}]]></content>
+    <tabTrigger>iparams</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.params()</description>
+</snippet>

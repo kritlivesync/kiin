@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.tpl(${1:'/tpl.html'})({status:true})]]></content>
+    <tabTrigger>ftpl</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.tpl</description>
+</snippet>
+
+
+
+

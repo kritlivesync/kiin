@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[module.exports = async(req, res, next) => {
+	${1}
+    next()
+};]]></content>
+    <tabTrigger>middle.new</tabTrigger>
+    <scope>source.js</scope>
+    <description>new.middle()</description>
+</snippet>

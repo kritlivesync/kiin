@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.id()]]></content>
+    <tabTrigger>fuuid</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.id()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[R.del("${1:key}");]]></content>
+    <tabTrigger>redisdel</tabTrigger>
+    <scope>source.js</scope>
+    <description>redis.del()</description>
+</snippet>
+
+
+
+

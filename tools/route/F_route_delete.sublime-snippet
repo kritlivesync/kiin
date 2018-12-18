@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[.delete(async(req, res) => {
+    res.json((await D.${1:arg}.remove({_id: req.query.id})) ? 
+        { 
+            status: true,
+            msg: 'delete success'
+        } : {
+            status: false,
+            msg :'delete false'
+        }
+    );
+})]]></content>
+    <tabTrigger>delete</tabTrigger>
+    <scope>source.js</scope>
+    <description>route.delete()</description>
+</snippet>
+
+
+
+

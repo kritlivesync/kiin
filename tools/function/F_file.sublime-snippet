@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.file]]></content>
+    <tabTrigger>ffile</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[R.get("${1:key}",async(err,data) => {
+    ${2}
+});]]></content>
+    <tabTrigger>redisget</tabTrigger>
+    <scope>source.js</scope>
+    <description>redis.get()</description>
+</snippet>
+
+
+
+

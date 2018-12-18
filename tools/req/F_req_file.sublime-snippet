@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[req.files.${1:key}]]></content>
+    <tabTrigger>ifile</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.files()</description>
+</snippet>

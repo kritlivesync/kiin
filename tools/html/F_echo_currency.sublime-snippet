@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[\{\{${1:string} | currency('$')\}\}]]></content>
+    <tabTrigger>echo.currency</tabTrigger>
+    <scope>text.html(.basic)</scope>
+    <description>echo.currency</description>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.date.format('YYYY-MM-DD HH:mm:ss')]]></content>
+    <tabTrigger>fdateformat</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.date.format()</description>
+</snippet>
+
+
+
+

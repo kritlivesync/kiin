@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[D.ObjectValid(${1:_id})]]></content>
+    <tabTrigger>dbobjectvalid</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.objectvalid()</description>
+</snippet>
+
+
+
+

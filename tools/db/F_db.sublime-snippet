@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}]]></content>
+    <tabTrigger>db</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.table()</description>
+</snippet>
+
+
+
+

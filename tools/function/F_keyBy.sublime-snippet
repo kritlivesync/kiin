@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[.keyBy(${1:key})${2}]]></content>
+    <tabTrigger>keyBy</tabTrigger>
+    <scope>source.js</scope>
+    <description>.keyBy()</description>
+</snippet>

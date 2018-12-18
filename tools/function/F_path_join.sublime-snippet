@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.path.join(C.dir.public, ${1:'/path_to'})]]></content>
+    <tabTrigger>fpathjoin</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.path.join</description>
+</snippet>
+
+
+
+

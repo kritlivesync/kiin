@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.count({${2}});]]></content>
+    <tabTrigger>dbcount</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.count()</description>
+</snippet>
+
+
+
+

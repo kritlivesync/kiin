@@ -1,0 +1,18 @@
+<snippet>
+	<content><![CDATA[await D.aggregate([
+    {\$project: {
+        title: 1,
+        newkey: "\$key"
+    }},
+    {\$group: {_id: '\$key_id'}},
+    {\$sort: {_id: 1}}
+    {\$limit : 5 }
+]).exec();]]></content>
+    <tabTrigger>dbaggregate</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.aggregate()</description>
+</snippet>
+
+
+
+

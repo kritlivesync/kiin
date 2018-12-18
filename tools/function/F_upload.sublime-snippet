@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.uploadfile(${1:'data:image/jpeg;base64,xxx'},'${2:/data/aa/}')]]></content>
+    <tabTrigger>fupload</tabTrigger>
+    <scope>source.js</scope>
+    <description>var path = F.uploadfile('base64','/to/path')</description>
+</snippet>
+
+
+
+

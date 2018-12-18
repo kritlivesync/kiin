@@ -1,0 +1,28 @@
+<snippet>
+    <content><![CDATA[\{% extends '../layout.html' %\} \{% block title %\}\{% endblock %\} \{% block content %\}
+
+<div class="container" ng-controller="AppController">
+	<div class="row">
+		<div class="col-12 col-md-12">
+			${2}
+		</div>
+	</div>
+</div>
+\{% endblock %\}
+
+\{% block js %\}
+    <script type="text/javascript">
+	\{% autoescape false %\}
+	    angular.module('App', [])
+	      .controller('AppController', (\$scope,\$http) => {
+	      	
+
+	      });
+	\{% endautoescape %\}	      
+    </script>
+\{% endblock %\}
+]]></content>
+    <tabTrigger>swig</tabTrigger>
+    <scope>text.html(.basic)</scope>
+    <description>swig</description>
+</snippet>

@@ -1,0 +1,14 @@
+<snippet>
+	<content><![CDATA[R.multi([
+  ['${1:set}',${2:key},${3:data}],
+]).exec(async(err,data) => {
+    ${4}
+});]]></content>
+    <tabTrigger>redismulti</tabTrigger>
+    <scope>source.js</scope>
+    <description>redis.multi()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.url]]></content>
+    <tabTrigger>furl</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.url</description>
+</snippet>
+
+
+
+

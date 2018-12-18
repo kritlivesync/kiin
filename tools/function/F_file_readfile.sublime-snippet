@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.readFileSync(${1:'/path_to/file'}, 'utf8');]]></content>
+    <tabTrigger>ffilereadfile</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.readFile</description>
+</snippet>
+

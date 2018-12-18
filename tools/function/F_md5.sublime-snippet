@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[F.encrypt(${1:data})]]></content>
+    <tabTrigger>fmd5</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.md5()</description>
+</snippet>

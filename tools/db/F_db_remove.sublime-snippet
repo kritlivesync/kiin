@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.remove({${2}});]]></content>
+    <tabTrigger>dbremove</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.remove()</description>
+</snippet>
+
+
+
+

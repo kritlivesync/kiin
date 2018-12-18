@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[req.body.${1:key}]]></content>
+    <tabTrigger>ipost</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.body()</description>
+</snippet>
+

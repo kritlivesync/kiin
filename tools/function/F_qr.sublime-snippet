@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.qr(${1:'data'})]]></content>
+    <tabTrigger>fqr</tabTrigger>
+    <scope>source.js</scope>
+    <description>var base64_content = F.qr('data_to_img')</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,34 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-decorators", 
+      { 
+        "legacy": true 
+      }
+    ],
+    [
+      "import", {
+        "libraryName": "antd",
+        "style": true
+      }
+    ],
+    [
+      "@babel/plugin-proposal-class-properties", 
+      { 
+        "loose": true 
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "@components": "./base/components",
+          "@stores": "./base/stores",
+          "@layouts": "./base/layouts"
+        }
+      }
+    ]
+  ]
+}

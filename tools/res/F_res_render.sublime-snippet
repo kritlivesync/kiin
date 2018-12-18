@@ -1,0 +1,9 @@
+<snippet>
+    <content><![CDATA[res.render('${1:page}',{
+    'title':'${2:title}',
+    'data':{${3}},
+});]]></content>
+    <tabTrigger>orender</tabTrigger>
+    <scope>source.js</scope>
+    <description>res.render()</description>
+</snippet>

@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.date().subtract(${1:1},${2:'months|days|hours|minutes|seconds'})]]></content>
+    <tabTrigger>fdatesub</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.date().subtract()</description>
+</snippet>
+
+
+
+

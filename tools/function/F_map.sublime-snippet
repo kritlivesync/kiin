@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[.map((item,index)=>{
+		${1}
+})${2}]]></content>
+    <tabTrigger>map</tabTrigger>
+    <scope>source.js</scope>
+    <description>.map()</description>
+</snippet>
+
+
+
+

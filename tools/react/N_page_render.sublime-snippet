@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[import React from 'react'
+import { observer, inject } from 'mobx-react';
+import { LayoutMain } from '@layouts';
+import { Router, Link } from '@components';
+import { Breadcrumb, Icon, Button, Row, Col} from 'antd';
+
+const ${1:NAME}View = ({${1:NAME}Id}) => (
+  <LayoutMain
+	  page="/${2:URL}" 
+	  title="${2:URL} View" 
+	  description="${2:URL} view description"
+	  keywork="${2:URL} view keyword"
+  >
+	<div class="uk-grid">
+	    <div class="uk-width-1-2">
+		    <h1>${1:NAME} View</h1>
+		    <p>view id : {${1:NAME}Id}</p>
+	    </div>
+	    <div class="uk-width-1-2">
+		    <Link href={`/to?id=\${${1:NAME}Id}`} as={`/to/\${${1:NAME}Id}`}>
+		      <Button type="primary">Link</Button>
+		    </Link>
+	    </div>
+	</div>
+  </LayoutMain>
+)
+
+${1:NAME}View.getInitialProps = ({ query: { id } }) =>{
+  return { ${1:NAME}Id: id }
+}
+
+export default ${1:key}View
+]]></content>
+    <tabTrigger>npagerender</tabTrigger>
+    <scope>source.js</scope>
+    <description>react pageRender</description>
+</snippet>

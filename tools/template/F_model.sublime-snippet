@@ -1,0 +1,15 @@
+<snippet>
+    <content><![CDATA[module.exports = (Schema) => {
+    return {
+        name: { type: String },
+        ref: {
+            type: Schema.Types.ObjectId,
+            ref: '_db'
+        },
+        status: { type: Boolean, default: false },
+    }
+}]]></content>
+    <tabTrigger>model.new</tabTrigger>
+    <scope>source.js</scope>
+    <description>new.model()</description>
+</snippet>

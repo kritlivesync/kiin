@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.findOneAndUpdate({${2}}, ${3:body});]]></content>
+    <tabTrigger>dbfindandupdate</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.findOneAndUpdate()</description>
+</snippet>
+
+
+
+

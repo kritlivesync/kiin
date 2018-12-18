@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[res.json({
+  status: ${1:true|false},
+  res: {
+    ${2}
+  }
+});]]></content>
+    <tabTrigger>ojson</tabTrigger>
+    <scope>source.js</scope>
+    <description>res.json()</description>
+</snippet>
+
+
+
+

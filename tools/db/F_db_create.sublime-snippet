@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.create(${2:body});]]></content>
+    <tabTrigger>dbcreate</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.create()</description>
+</snippet>
+
+
+
+

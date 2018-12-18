@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.agent(req.headers['user-agent'])]]></content>
+    <tabTrigger>fagent</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.agent()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[var ${1:key}	= ${2};]]></content>
+    <tabTrigger>var</tabTrigger>
+    <scope>source.js</scope>
+    <description>var key = obj()</description>
+</snippet>

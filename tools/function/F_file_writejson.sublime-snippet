@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.writeJsonSync(${1:'/package.json'}, ${2:'json_object'});]]></content>
+    <tabTrigger>ffilewritejson</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.writeJson</description>
+</snippet>
+

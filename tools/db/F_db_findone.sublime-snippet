@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[await D.${1:table}.findOne({${2}});]]></content>
+    <tabTrigger>dbfindone</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.findone()</description>
+</snippet>
+
+
+
+

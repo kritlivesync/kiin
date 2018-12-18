@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[req.session.${1:key}]]></content>
+    <tabTrigger>isession</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.session()</description>
+</snippet>

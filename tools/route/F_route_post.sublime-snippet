@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[.post(async(req, res) => {
+    var 
+        input = req.body;
+        input.date_create = input.date_update = F.date().format('YYYY-MM-DD HH:mm:ss');
+
+        res.json((await D.${1:arg}.create(input)) ?
+            { 
+                status: true,
+                msg: 'add success'
+            } : {
+                status: false,
+                msg :'add false'
+            }
+        );
+})]]></content>
+    <tabTrigger>post</tabTrigger>
+    <scope>source.js</scope>
+    <description>route.post()</description>
+</snippet>
+
+
+
+

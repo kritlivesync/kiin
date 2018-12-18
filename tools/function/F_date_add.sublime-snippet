@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.date().add(${1:1}, ${2:'months|days|hours|minutes|seconds'})]]></content>
+    <tabTrigger>fdateadd</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.date().add()</description>
+</snippet>
+
+
+
+

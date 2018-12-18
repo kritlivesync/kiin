@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.random(${1:10000},${2:99999})]]></content>
+    <tabTrigger>frandom</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.random()</description>
+</snippet>
+
+
+
+

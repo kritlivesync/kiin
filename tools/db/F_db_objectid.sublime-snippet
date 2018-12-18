@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[D.ObjectId(${1:_id})]]></content>
+    <tabTrigger>dbobjectid</tabTrigger>
+    <scope>source.js</scope>
+    <description>db.objectid()</description>
+</snippet>
+
+
+
+

@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[req.query.${1:key}]]></content>
+    <tabTrigger>iget</tabTrigger>
+    <scope>source.js</scope>
+    <description>req.query()</description>
+</snippet>

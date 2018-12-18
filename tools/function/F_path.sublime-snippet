@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[F.path]]></content>
+    <tabTrigger>fpath</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.path</description>
+</snippet>
+
+
+
+

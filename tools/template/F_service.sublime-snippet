@@ -1,0 +1,16 @@
+<snippet>
+    <content><![CDATA[const ${1:ServiceName} = () => {}
+    	
+${1:ServiceName}.${2:actionName} = async() => {
+        ${3}
+        return 
+}
+
+${3}
+
+module.exports = ${1:ServiceName} 
+]]></content>
+    <tabTrigger>service.new</tabTrigger>
+    <scope>source.js</scope>
+    <description>new.service()</description>
+</snippet>

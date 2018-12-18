@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[F.file.emptyDirSync(${1:'/path/to/dir'});]]></content>
+    <tabTrigger>ffileemptydir</tabTrigger>
+    <scope>source.js</scope>
+    <description>function.file.emptydir</description>
+</snippet>
+

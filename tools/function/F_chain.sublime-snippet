@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[_.chain(${1:data})]]></content>
+    <tabTrigger>_chain</tabTrigger>
+    <scope>source.js</scope>
+    <description>_.chain()</description>
+</snippet>
+
+

@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[await Promise.all(${1:object}.map (async item => {
+        return ${2:item};    
+}))]]></content>
+    <tabTrigger>promisemap</tabTrigger>
+    <scope>source.js</scope>
+    <description>promise.map()</description>
+</snippet>
+
+
+
+
+

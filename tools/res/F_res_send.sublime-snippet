@@ -1,0 +1,6 @@
+<snippet>
+    <content><![CDATA[res.send(${1:text});]]></content>
+    <tabTrigger>osend</tabTrigger>
+    <scope>source.js</scope>
+    <description>res.send()</description>
+</snippet>

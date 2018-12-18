@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[.filter((item,index) => {
+		${1}
+})${2}]]></content>
+    <tabTrigger>filter</tabTrigger>
+    <scope>source.js</scope>
+    <description>.filter()</description>
+</snippet>
+
+
+
+
+

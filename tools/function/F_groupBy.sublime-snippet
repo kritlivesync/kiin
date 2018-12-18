@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[.groupBy(${1:key})${2}]]></content>
+    <tabTrigger>groupBy</tabTrigger>
+    <scope>source.js</scope>
+    <description>.groupBy()</description>
+</snippet>

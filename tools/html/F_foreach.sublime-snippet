@@ -1,0 +1,8 @@
+<snippet>
+    <content><![CDATA[\{% for key,item in ${1:items} %\}
+    ${2}
+\{% endfor %\}]]></content>
+    <tabTrigger>foreach</tabTrigger>
+    <scope>text.html(.basic)</scope>
+    <description>foreach</description>
+</snippet>
