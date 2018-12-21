@@ -1,7 +1,7 @@
 /**
- * @serviceName : {serviceName}
- * @servicePath : {servicePath}
+ * @controllerName : {serviceName}
  */
+ 
  module.exports = async(app,view) => {
   app 
     .route('/{serviceName}/:action/:id?')
@@ -13,7 +13,6 @@
 
         data = allow.indexOf(action)!=-1) ? await S._{serviceName}[action](req, res) : { status: false }
         res.json(data);
- 
     })
     .post(async(req, res) => {
         var 

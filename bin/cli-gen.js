@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies
- */
+
 var program  = require('commander');
 var readline = require('readline');
 var async    = require('async');
 var generators = require('../generate/lib/generators');
-var cliStyles = require('../generate/lib/cliStyles');
 
 var pkg = require('../package.json');
 var version = pkg.version;
@@ -20,52 +17,51 @@ var rl = readline.createInterface({
 var ALLOWED_FIELDS_TYPES = ['string', 'number', 'date', 'boolean', 'array', 'objectId'];
 var ALLOWED_REST_ARGUMENT = {'YES': 'yes', 'NO': 'no'};
 var CLI_PHRASES = {
-    AVAILABLE_TYPE: 'Available types : string, number, date, boolean, array, objectId',
-    QUESTION_MODEL_NAME: 'Model Name : ',
-    QUESTION_FIELD_NAME: 'Field Name (press <return> to stop adding fields) : ',
-    QUESTION_FIELD_TYPE: 'Field Type [string] : ',
-    QUESTION_FIELD_REF: 'Reference (model name referred by the objectId field) : ',
+    AVAILABLE_TYPE: '\x1b[36mAvailable types :\x1b[0m string, number, date, boolean, array, objectId',
+    QUESTION_MODEL_NAME: '\x1b[36mModel Name :\x1b[0m ',
+    QUESTION_FIELD_NAME: '\x1b[36mField Name\x1b[0m  (press <return> to stop adding fields) :',
+    QUESTION_FIELD_TYPE: '\x1b[36mField Type\x1b[0m [string] : ',
+    QUESTION_FIELD_REF: '\x1b[36mReference\x1b[0m  (model name referred by the objectId field eg. _member) :',
     QUESTION_GENERATE_REST: 'Generate Rest (yes/no) ? [yes] : ',
     ERROR_MODEL_NAME: 'Argument required : Model name',
     ERROR_TYPE_ARGUMENT: 'Invalid Argument : Field type is not allowed',
     ERROR_REST_ARGUMENT: 'Argument invalid : rest',
-    ERROR_FILES_TREE_ARGUMENT: 'Argument invalid : file tree generation',
     ERROR_FIELD_REQUIRED: 'Argument required : fields',
     ERROR_FIELD_NAME_REQUIRED: 'Argument required : Field Name',
     ERROR_FIELD_TYPE_REQUIRED: 'Argument required : Field type',
     ERROR_FIELD_TYPE_INVALID: 'Invalid Argument : Field type is not allowed'
 };
 
-// CLI
 program
     .version(version)
     .usage('[options]')
     .option('-m, --model <modelName>', 'model name')
     .option('-f, --fields <fields>', 'model fields (name1:type1,name2:type2)')
     .option('-r, --rest', 'enable generation REST')
-    .option('-t, --tree <tree>', 'files tree generation grouped by <t>ype or by <m>odule')
-    .option('--ts', 'Generating code in TS')
+    .option('-h, --help', 'help')
     .parse(process.argv)
 ;
 
-// Main program
 (function (path) {
     if (program.model || program.fields) {
         runNonInteractiveMode(path);
-    } else {
+    } else if(program.help) {
         runInteractiveMode(path);
+
+    } else {
+
+        console.log('   \x1b[36mGenerate\x1b[0m : ')
+        console.log('   kiin-gen -m user -f name,email,group_id:objectId:-user,status:boolean -r')
+        closeProgram();        
     }
 })('.');
 
-/**
- * Get parameters in interactive mode
- * @param {string} path destination path
- */
+
 function runInteractiveMode (path) {
     async.series({
             name: function (cb) {
                 askQuestion(CLI_PHRASES.QUESTION_MODEL_NAME, isModelNameParamValid, function (name) {
-                    console.log(cliStyles.green + CLI_PHRASES.AVAILABLE_TYPE + cliStyles.reset);
+                    console.log(CLI_PHRASES.AVAILABLE_TYPE);
                     cb(null, name);
                 });
             },
@@ -154,10 +150,6 @@ function runInteractiveMode (path) {
     );
 }
 
-/**
- * Get parameters in non-interactive mode
- * @param {string} path destination path
- */
 function runNonInteractiveMode(path) {
     if (!isModelNameParamValid(program.model) || !isFieldsParamValid(program.fields)) {
         return closeProgram();
@@ -187,13 +179,6 @@ function runNonInteractiveMode(path) {
     );
 }
 
-/**
- * Ask a question in the console and waits for a response
- * if the answer is invalid, the question is recalled
- * @param {string} question input question in the console
- * @param {function} validate validation function (nullable)
- * @param {function} callback callback function
- */
 function askQuestion(question, validate, callback) {
     rl.question(question, function(answer) {
         if (validate) {
@@ -206,19 +191,11 @@ function askQuestion(question, validate, callback) {
     });
 }
 
-/**
- * Close the program
- */
 function closeProgram() {
     rl.close();
     process.exit();
 }
 
-/**
- * Validate model name input
- * @param {string} name
- * @returns {boolean} is validated
- */
 function isModelNameParamValid(name) {
     if (!name || name.trim().length === 0) {
         consoleError(CLI_PHRASES.ERROR_MODEL_NAME);
@@ -227,13 +204,9 @@ function isModelNameParamValid(name) {
     return true;
 }
 
-/**
- * validate field type input
- * @param {string} fieldType
- * @returns {boolean} is validated
- */
+
 function isFieldTypeParamValid(fieldType) {
-    if (!fieldType || fieldType.trim().length === 0) { fieldType = ALLOWED_FIELDS_TYPES[0]; } // default value
+    if (!fieldType || fieldType.trim().length === 0) { fieldType = ALLOWED_FIELDS_TYPES[0]; }
     if (ALLOWED_FIELDS_TYPES.indexOf(fieldType) === -1) {
         consoleError(CLI_PHRASES.ERROR_TYPE_ARGUMENT);
         return false;
@@ -241,13 +214,8 @@ function isFieldTypeParamValid(fieldType) {
     return true;
 }
 
-/**
- * validate rest input
- * @param {string} param
- * @returns {boolean} is validated
- */
 function isRestParamValid(param) {
-    if (!param || param.trim().length === 0) { param = ALLOWED_REST_ARGUMENT.YES; } // default value
+    if (!param || param.trim().length === 0) { param = ALLOWED_REST_ARGUMENT.YES; }
     if (param !== ALLOWED_REST_ARGUMENT.YES && param !== ALLOWED_REST_ARGUMENT.NO) {
         consoleError(CLI_PHRASES.ERROR_REST_ARGUMENT);
         return false;
@@ -255,12 +223,6 @@ function isRestParamValid(param) {
     return true;
 }
 
-
-/**
- * Validate fields input
- * @param {string} fields
- * @returns {boolean} is validated
- */
 function isFieldsParamValid(fields) {
     if (!fields || fields.trim().length === 0) {
         consoleError(CLI_PHRASES.ERROR_FIELD_REQUIRED);
@@ -269,12 +231,6 @@ function isFieldsParamValid(fields) {
     return true;
 }
 
-/**
- * Validate name / type of a field
- * @param {string} fieldName
- * @param {string} fieldType
- * @returns {boolean} is validated
- */
 function isFieldValid(fieldName, fieldType) {
     if (!fieldName || fieldName.trim().length === 0) {
         consoleError(CLI_PHRASES.ERROR_FIELD_NAME_REQUIRED);
@@ -291,11 +247,6 @@ function isFieldValid(fieldName, fieldType) {
     return true;
 }
 
-/**
- * Format fields input in array
- * @param {string} fields fields input
- * @returns {Array} fields formatted
- */
 function formatFieldsParamInArray(fields) {
     var arrayFields = fields.split(',');
     var result = [];
@@ -331,5 +282,5 @@ function formatFieldsParamInArray(fields) {
 }
 
 function consoleError(msg) {
-    return console.log(cliStyles.red + msg + cliStyles.reset);
+    return console.log(msg);
 }

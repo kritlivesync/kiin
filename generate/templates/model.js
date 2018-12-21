@@ -1,7 +1,5 @@
 /**
- * @modelName : {modelName}
- * @schemaName : {schemaName}
- * @fields : {fields}
+ * @schemaName : {modelName}
  */
 
 module.exports = (Schema) => {
