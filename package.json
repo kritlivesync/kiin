@@ -19,7 +19,8 @@
   },
   "preferGlobal": true,
   "bin": {
-    "kiin": "./bin/cli.js"
+    "kiin": "./bin/cli.js",
+    "kiin-gen": "./bin/cli-gen"
   },
   "dependencies": {
     "compression": "^1.7.3",
