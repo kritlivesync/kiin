@@ -139,11 +139,11 @@ function runInteractiveMode (path) {
                     },
                     function (cb) {
                         if (results.rest !== 'yes') { return cb(); }
-                        generators.generateRouter(path, results.name,  cb);
+                        generators.generateController(path, results.name,  cb);
                     }            ,
                     function (cb) {
                         if (results.rest !== 'yes') { return cb(); }
-                        generators.generateController(path, results.name, results.fields, cb);
+                        generators.generateService(path, results.name, results.fields, cb);
                     }
                 ],
                 function (err, results) {
@@ -174,11 +174,11 @@ function runNonInteractiveMode(path) {
             },
             function (cb) {
                 if (!program.rest) { return cb(); }
-                generators.generateRouter(path, modelName, cb);
+                generators.generateController(path, modelName, cb);
             },
             function (cb) {
                 if (!program.rest) { return cb(); }
-                generators.generateController(path, modelName, modelFields, cb);
+                generators.generateService(path, modelName, modelFields, cb);
             }
         ],
         function (err, results) {
