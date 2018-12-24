@@ -28,68 +28,6 @@ const {serviceName} = () => {}
         return { form, option };
 }
 
-{serviceName}.form_add = async(req, res) => {
-    var
-        data, options, form,
-        input = req.query,
-        current = +input.page || 1
-        conditions = {},
-        page = {
-            current: current,
-            numRange: 4,
-            size: 10
-        };
-
-        options = {
-            limit: page.size,
-            sort: {_id: -1},
-            skip: (page.current - 1) * page.size
-        };
-
-        data = await D.{modelName}.find(conditions, null, options); //.populate('db filed');
-        page.rowCount = await D.{modelName}.count(conditions);
-        page.pageCount = Math.ceil(page.rowCount / page.size);
-
-        
-        return {
-            status: true,
-            data: {
-                data: data,
-                info: page
-            }
-        };
-}
-
-{serviceName}.form_edit = async(req, res) => {
-    var
-        data, options,
-        input = req.query,
-        current = +input.page || 1
-        conditions = {},
-        page = {
-            current: current,
-            numRange: 4,
-            size: 10
-        };
-
-        options = {
-            limit: page.size,
-            sort: {_id: -1},
-            skip: (page.current - 1) * page.size
-        };
-
-        data = await D.{modelName}.find(conditions, null, options); //.populate('db filed');
-        page.rowCount = await D.{modelName}.count(conditions);
-        page.pageCount = Math.ceil(page.rowCount / page.size);
-
-        return {
-            status: true,
-            data: {
-                data: data,
-                info: page
-            }
-        };
-}
 
 {serviceName}.list = async(req, res) => {
     var
@@ -99,19 +37,18 @@ const {serviceName} = () => {}
         conditions = {},
         page = {
             current: current,
-            numRange: 4,
-            size: 10
+            pageSize: 10
         };
 
         options = {
-            limit: page.size,
+            limit: page.pageSize,
             sort: {_id: -1},
-            skip: (page.current - 1) * page.size
+            skip: (page.current - 1) * page.pageSize
         };
 
         data = await D.{modelName}.find(conditions, null, options); //.populate('db filed');
-        page.rowCount = await D.{modelName}.count(conditions);
-        page.pageCount = Math.ceil(page.rowCount / page.size);
+        page.total = await D.{modelName}.count(conditions);
+        page.pageCount = Math.ceil(page.total / page.pageSize);
 
         form = await {serviceName}.form_view()
 
