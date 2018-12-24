@@ -11,9 +11,17 @@ const {serviceName} = () => {}
 
     var 
         option={}
-        form = [
+        form = {
+            view:[
+                {{formFields}}
+              ],
+            add:[
+                {{formFields}}
+              ],
+            edit:[
                 {{formFields}}
               ]
+          }
 
         {refFields}
 
@@ -42,12 +50,10 @@ const {serviceName} = () => {}
         page.rowCount = await D.{modelName}.count(conditions);
         page.pageCount = Math.ceil(page.rowCount / page.size);
 
-        form = await {serviceName}.form_view()
-
+        
         return {
             status: true,
             data: {
-                form : form,
                 data: data,
                 info: page
             }
@@ -107,9 +113,12 @@ const {serviceName} = () => {}
         page.rowCount = await D.{modelName}.count(conditions);
         page.pageCount = Math.ceil(page.rowCount / page.size);
 
+        form = await {serviceName}.form_view()
+
         return {
             status: true,
             data: {
+                ...form,
                 data: data,
                 info: page
             }
@@ -118,7 +127,7 @@ const {serviceName} = () => {}
 
 {serviceName}.view = async(req, res) => {
     var data = await D.{modelName}.findOne({
-        _id: D.ObjectId(req.params.id);
+        _id: D.ObjectId(req.params.id)
     }); //.populate('db filed');
 
     return {
@@ -165,6 +174,6 @@ const {serviceName} = () => {}
             status: false,
             msg :'delete false'
         }
-})
+}
 
 module.exports = {serviceName};

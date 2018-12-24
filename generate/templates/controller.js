@@ -4,7 +4,7 @@
  
  module.exports = async(app,view) => {
   app 
-    .route('/{serviceName}/:action/:id?')
+    .route('/api/{serviceName}/:action/:id?')
     .get(async(req, res) => {
         var 
             data,
