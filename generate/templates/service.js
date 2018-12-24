@@ -40,11 +40,18 @@ const {serviceName} = () => {}
             pageSize: 10
         };
 
+
         options = {
             limit: page.pageSize,
-            sort: {_id: -1},
+            sort: {},
             skip: (page.current - 1) * page.pageSize
         };
+
+        if(input.sortField && input.sortOrder){
+           options.sort[input.sortField] = input.sortOrder=='ascend'? 1 ; -1
+        }else{
+            options.sort = {_id: -1}
+        }
 
         data = await D.{modelName}.find(conditions, null, options); //.populate('db filed');
         page.total = await D.{modelName}.count(conditions);
