@@ -8,9 +8,8 @@
 const {serviceName} = () => {}
 
 {serviceName}.form_view = async(req, res) => {
-
     var 
-        option={}
+        option = {},
         form = {
             view:[
                 {{formFields}}
@@ -48,7 +47,7 @@ const {serviceName} = () => {}
         };
 
         if(input.sortField && input.sortOrder){
-           options.sort[input.sortField] = input.sortOrder=='ascend'? 1 ; -1
+           options.sort[input.sortField] = input.sortOrder=='ascend'? 1 : -1
         }else{
             options.sort = {_id: -1}
         }
