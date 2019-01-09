@@ -64,7 +64,7 @@ function generateController(path, databaseName, modelName, cb) {
 }
 
 function generateService(path, databaseName, modelName, modelFields, cb) {
-
+    var page = ft.loadTemplateSync('page.js');
     var service = ft.loadTemplateSync('service.js');
     var formFields = os.EOL+'\t\t\t\t\tkey:"root-'+modelName+'",title:"'+formatTools.capitalizeFirstLetter(modelName)+'",'+os.EOL+'\t\t\t\t\trow:[' + os.EOL
 
@@ -107,8 +107,21 @@ function generateService(path, databaseName, modelName, modelFields, cb) {
     service = service.replace(/{formFields}/g, formFields);
     service = service.replace(/{refFields}/g, refFields);
 
-    ft.createDirIfIsNotDefined(path, 'app/services', function () {
-        ft.writeFile(path + '/app/services/_' + modelName + '.js', service, null, cb);
+    page = page.replace(/{databaseName}/g, databaseName);
+    page = page.replace(/{modelName}/g, modelName);
+    page = page.replace(/{componentName}/g, formatTools.capitalizeFirstLetter(modelName));
+    page = page.replace(/{index}/g,  form_type[modelFields[0].type]=='string'? modelFields[0].name : 'label');
+    page = page.replace(/{indexName}/g,  formatTools.capitalizeFirstLetter(form_type[modelFields[0].type]=='string'? modelFields[0].name : 'label'));
+
+
+    ft.createDirIfIsNotDefined(path, 'pages/'+databaseName, function () {
+        ft.createDirIfIsNotDefined(path, 'pages/'+databaseName+'/' + modelName, function () {
+            ft.createDirIfIsNotDefined(path, 'app/services', function () {
+                ft.writeFile(path + '/app/services/_' + modelName + '.js', service, null, ()=>{
+                     ft.writeFile(path + '/pages/'+databaseName+'/' + modelName + '/index.js', page, null, cb);
+                });
+            });
+        });
     });
 
 }
