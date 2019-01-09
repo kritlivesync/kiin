@@ -85,7 +85,7 @@ function generateService(path, databaseName, modelName, modelFields, cb) {
 
     modelFields.forEach(function (f, index, fields) {
         if(form_type[f.type]=='objectId'){
-            refFields += '\t\t'+`option.${f.name} = await D.${databaseName}.${f.reference}.find({},'_id,${form_type[modelFields[0].type]=='string'? modelFields[0].name : 'label'}')` + os.EOL
+            refFields += '\t\t'+`option.${f.name} = await D.${databaseName}.${f.reference}.find({},'_id ${form_type[modelFields[0].type]=='text'? modelFields[0].name : 'label'}')` + os.EOL
         }
         if(form_type[f.type]=='boolean'){
             refFields += '\t\t'+`option.${f.name} = [{key:true,label:'On'},{key:false,label:'Off'}]` + os.EOL
