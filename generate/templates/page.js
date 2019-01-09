@@ -10,8 +10,8 @@ export default class {componentName} extends React.Component {
   state = {
     api:'/api/{databaseName}/{modelName}',
     columns:[{
-      title: {indexName},
-      dataIndex: {index},
+      title: '{indexName}',
+      dataIndex: '{index}',
       sorter: true,
     }]
   };
