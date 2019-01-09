@@ -14,7 +14,16 @@ var rl = readline.createInterface({
     output: process.stdout
 });
 
-var ALLOWED_FIELDS_TYPES = ['string', 'number', 'date', 'boolean', 'array', 'objectId'];
+var ALLOWED_FIELDS_TYPES = [    'text', 
+    'textarea', 
+    'email', 
+    'phone', 
+    'address', 
+    'number', 
+    'date', 
+    'select', 
+    'array', 
+    'select_id'];
 var ALLOWED_REST_ARGUMENT = {'YES': 'yes', 'NO': 'no'};
 var CLI_PHRASES = {
     AVAILABLE_TYPE: '\x1b[36mAvailable types :\x1b[0m string, number, date, boolean, array, objectId',
@@ -97,13 +106,13 @@ function runInteractiveMode (path) {
                                 type: function (cb) {
                                     askQuestion(CLI_PHRASES.QUESTION_FIELD_TYPE, isFieldTypeParamValid,
                                         function (fieldType) {
-                                            currentField.type = (fieldType.trim().length === 0) ? 'string' : fieldType;
+                                            currentField.type = (fieldType.trim().length === 0) ? 'text' : fieldType;
                                             cb(null, currentField.type);
                                         }
                                     );
                                 },
                                 reference: function (cb) {
-                                    if (currentField.type === 'objectId') {
+                                    if (currentField.type === 'select_id') {
                                         askQuestion(CLI_PHRASES.QUESTION_FIELD_REF, null, function (referenceName) {
                                             referenceName = (referenceName.trim().length === 0) ?
                                                 'INSERT_YOUR_REFERENCE_NAME_HERE'
@@ -223,6 +232,7 @@ function isModelNameParamValid(name) {
 
 
 function isFieldTypeParamValid(fieldType) {
+    console.log('===>',fieldType,ALLOWED_FIELDS_TYPES[0]);
     if (!fieldType || fieldType.trim().length === 0) { fieldType = ALLOWED_FIELDS_TYPES[0]; }
     if (ALLOWED_FIELDS_TYPES.indexOf(fieldType) === -1) {
         consoleError(CLI_PHRASES.ERROR_TYPE_ARGUMENT);
@@ -257,6 +267,7 @@ function isFieldValid(fieldName, fieldType) {
         consoleError(CLI_PHRASES.ERROR_FIELD_TYPE_REQUIRED);
         return false;
     }
+    console.log(fieldType,ALLOWED_FIELDS_TYPES.indexOf(fieldType))
     if (ALLOWED_FIELDS_TYPES.indexOf(fieldType) === -1) {
         consoleError(CLI_PHRASES.ERROR_FIELD_TYPE_INVALID);
         return false;
@@ -276,11 +287,11 @@ function formatFieldsParamInArray(fields) {
         var fieldRef = '';
         var isArray = false;
 
-        if (fieldType === ALLOWED_FIELDS_TYPES[5]) {
+        if (fieldType === ALLOWED_FIELDS_TYPES[9]) {
             fieldRef = f[2];
-            isArray = f[3] === ALLOWED_FIELDS_TYPES[4];
+            isArray = f[3] === ALLOWED_FIELDS_TYPES[8];
         } else {
-            isArray = f[2] === ALLOWED_FIELDS_TYPES[4];
+            isArray = f[2] === ALLOWED_FIELDS_TYPES[8];
         }
 
         if (!isFieldValid(fieldName, fieldType)) { return false; }

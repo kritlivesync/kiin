@@ -18,7 +18,7 @@ var form_type = {
     'number':'number', 
     'date':'date', 
     'select':'boolean', 
-    'text':'array', 
+    'array':'array', 
     'select_id':'objectId'
 }
 function getFieldsForModelTemplate(fields) {
@@ -26,6 +26,7 @@ function getFieldsForModelTemplate(fields) {
 
     var modelFields = '{' + os.EOL;
     fields.forEach(function(field, index, array) {
+
         modelFields += '\t\t\'' + field.name + '\' : '+ (field.isArray ? '[' : '') + (allowedFieldsTypes[form_type[field.type]]).name + (field.isArray ? ']' : '');
         modelFields += (lg > index) ? ',' + os.EOL : os.EOL;
 

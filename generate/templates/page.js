@@ -8,7 +8,7 @@ import { Crud } from '@components';
 export default class {componentName} extends React.Component {
 
   state = {
-    api:'/api/{databaseName}/{serviceName}',
+    api:'/api/{databaseName}/{modelName}',
     columns:[{
       title: {indexName},
       dataIndex: {index},
@@ -17,7 +17,7 @@ export default class {componentName} extends React.Component {
   };
 
   header = {
-      page:"/{databaseName}/{serviceName}" ,
+      page:"/{databaseName}/{modelName}" ,
       title:"Manage {componentName}" ,
       description:"{componentName} description",
       keywork:"{componentName} keyword"
