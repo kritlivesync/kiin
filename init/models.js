@@ -14,7 +14,7 @@ function eachModel(db, dir) {
             var _key = dir.split('/').slice(-1).pop()
             
             if (_key != 'models') {
-                console.log('Connect : '_key+' ====> ' +_name)
+                console.log('Connect : '+_key+' ====> ' +_name)
                 D[_key][_name] = db[_key].model(_name, require(F.path.join(dir, name))(Schema));
             }
 
