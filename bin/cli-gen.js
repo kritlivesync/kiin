@@ -232,7 +232,6 @@ function isModelNameParamValid(name) {
 
 
 function isFieldTypeParamValid(fieldType) {
-    console.log('===>',fieldType,ALLOWED_FIELDS_TYPES[0]);
     if (!fieldType || fieldType.trim().length === 0) { fieldType = ALLOWED_FIELDS_TYPES[0]; }
     if (ALLOWED_FIELDS_TYPES.indexOf(fieldType) === -1) {
         consoleError(CLI_PHRASES.ERROR_TYPE_ARGUMENT);
@@ -267,7 +266,6 @@ function isFieldValid(fieldName, fieldType) {
         consoleError(CLI_PHRASES.ERROR_FIELD_TYPE_REQUIRED);
         return false;
     }
-    console.log(fieldType,ALLOWED_FIELDS_TYPES.indexOf(fieldType))
     if (ALLOWED_FIELDS_TYPES.indexOf(fieldType) === -1) {
         consoleError(CLI_PHRASES.ERROR_FIELD_TYPE_INVALID);
         return false;
