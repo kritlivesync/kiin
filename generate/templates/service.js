@@ -1,5 +1,5 @@
 /**
- * @serviceName : {serviceName}
+ * @serviceName : {databaseName}=>{serviceName}
  * @modelName : {modelName}
  * @name : {name}
  * @description : logic for managing {name}.
@@ -52,8 +52,8 @@ const {serviceName} = () => {}
             options.sort = {_id: -1}
         }
 
-        data = await D.{modelName}.find(conditions, null, options); //.populate('db filed');
-        page.total = await D.{modelName}.count(conditions);
+        data = await D.{databaseName}.{modelName}.find(conditions, null, options); //.populate('db filed');
+        page.total = await D.{databaseName}.{modelName}.count(conditions);
         page.pageCount = Math.ceil(page.total / page.pageSize);
 
         form = await {serviceName}.form_view()
@@ -69,7 +69,7 @@ const {serviceName} = () => {}
 }
 
 {serviceName}.view = async(req, res) => {
-    var data = await D.{modelName}.findOne({
+    var data = await D.{databaseName}.{modelName}.findOne({
         _id: D.ObjectId(req.params.id)
     }); //.populate('db filed');
 
@@ -84,7 +84,7 @@ const {serviceName} = () => {}
         input = {{createFields}
         };
 
-        return (await D.{modelName}.create(input)) ?
+        return (await D.{databaseName}.{modelName}.create(input)) ?
             { 
                 status: true,
                 msg: 'add success'
@@ -98,7 +98,7 @@ const {serviceName} = () => {}
     var 
         input = req.body;
 
-        return (await D.{modelName}.findOneAndUpdate({_id: req.params.id}, input)) ?
+        return (await D.{databaseName}.{modelName}.findOneAndUpdate({_id: req.params.id}, input)) ?
             { 
                 status: true,
                 msg: 'update success'
@@ -109,7 +109,7 @@ const {serviceName} = () => {}
 }
 
 {serviceName}.delete = async(req, res) => {
-    return (await D.{modelName}.remove({_id: req.params.id})) ? 
+    return (await D.{databaseName}.{modelName}.remove({_id: req.params.id})) ? 
         { 
             status: true,
             msg: 'delete success'

@@ -1,6 +1,6 @@
 <snippet>
 	<content><![CDATA[.delete(async(req, res) => {
-    res.json((await D.${1:arg}.remove({_id: req.query.id})) ? 
+    res.json((await D.${1:database}.${2:_table}.remove({_id: req.query.id})) ? 
         { 
             status: true,
             msg: 'delete success'

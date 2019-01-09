@@ -61,9 +61,9 @@ function createApplication (name, root_path) {
         {
           "name"   : name+".server",
           "script" : "./server.js",
-          "max_memory_restart" : "900M",
-          "exec_mode" : "cluster",
-          "instances" : 1,
+          // "max_memory_restart" : "900M",
+          // "exec_mode" : "cluster",
+          // "instances" : 1,
           "env_production" : {
             "NODE_ENV": "production",
             "NODE_KEY": name
@@ -99,13 +99,15 @@ function createApplication (name, root_path) {
     "autoReconnect": true
   },
   "db": {
-    "uri": "mongodb://127.0.0.1:27017/_${name}",
-    "opts": {
-      "user": "${name}",
-      "pass": "${new_pass}",
-      "useNewUrlParser": true
-    }
-  },    
+     "main" : {
+      "uri": "mongodb://127.0.0.1:27017/_${name}",
+      "opts": {
+        "user": "${name}",
+        "pass": "${new_pass}",
+        "useNewUrlParser": true
+      }
+    }  
+  },  
   "root": __dirname,
   "dir": {
     "static": "/upload",

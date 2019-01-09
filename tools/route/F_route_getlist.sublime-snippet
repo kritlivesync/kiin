@@ -18,12 +18,12 @@
             skip: (page.current - 1) * page.size
         };
 
-        data = await D.${1:arg}.find(conditions, null, options); //.populate('db filed');
+        data = await D.${1:database}.${2:_table}.find(conditions, null, options); //.populate('db filed');
 
-        page.rowCount = await D.${1:arg}.count(conditions);
+        page.rowCount = await D.${1:database}.${2:_table}.count(conditions);
         page.pageCount = Math.ceil(page.rowCount / page.size);
 
-        ${2}
+        ${3}
 
         res.json({
             status: true,

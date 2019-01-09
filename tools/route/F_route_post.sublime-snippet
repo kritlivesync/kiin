@@ -4,7 +4,7 @@
         input = req.body;
         input.date_create = input.date_update = F.date().format('YYYY-MM-DD HH:mm:ss');
 
-        res.json((await D.${1:arg}.create(input)) ?
+        res.json((await D.${1:database}.${2:_table}.create(input)) ?
             { 
                 status: true,
                 msg: 'add success'

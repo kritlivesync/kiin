@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[await D.${1:table}.findOneAndUpdate({${2}}, ${3:body});]]></content>
+	<content><![CDATA[await D.${1:database}.${2:_table}.findOneAndUpdate({${3}}, ${4:body});]]></content>
     <tabTrigger>dbfindandupdate</tabTrigger>
     <scope>source.js</scope>
     <description>db.findOneAndUpdate()</description>

@@ -1,11 +1,11 @@
 /**
- * @controllerName : {serviceName}
+ * @controllerName : {databaseName}=>{serviceName}
  * @action : create
  */
  
  module.exports = async(app,view) => {
   app 
-    .route('/api/{serviceName}/create')
+    .route('/api/{databaseName}/{serviceName}/create')
     .post(async(req, res) => {
         var data = await S._{serviceName}.create(req, res)
         res.json(data);

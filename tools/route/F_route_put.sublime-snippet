@@ -6,7 +6,7 @@
 
         ${2}
 
-        res.json((await D.${1:arg}.findOneAndUpdate({_id: req.query.id}, input)) ?
+        res.json((await D.${1:database}.${2:_table}.findOneAndUpdate({_id: req.query.id}, input)) ?
             { 
                 status: true,
                 msg: 'update success'

@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[await D.${1:table}]]></content>
+	<content><![CDATA[await D.${1:database}.${2:_table}]]></content>
     <tabTrigger>db</tabTrigger>
     <scope>source.js</scope>
     <description>db.table()</description>

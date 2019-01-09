@@ -1,11 +1,11 @@
 /**
- * @controllerName : {serviceName}
+ * @controllerName : {databaseName}=>{serviceName}
  * @action : delete
  */
  
  module.exports = async(app,view) => {
   app 
-    .route('/api/{serviceName}/delete/:id')
+    .route('/api/{databaseName}/{serviceName}/delete/:id')
     .post(async(req, res) => {
         var data = await S._{serviceName}.delete(req, res)
         res.json(data);

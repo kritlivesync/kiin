@@ -18,11 +18,13 @@ var ALLOWED_FIELDS_TYPES = ['string', 'number', 'date', 'boolean', 'array', 'obj
 var ALLOWED_REST_ARGUMENT = {'YES': 'yes', 'NO': 'no'};
 var CLI_PHRASES = {
     AVAILABLE_TYPE: '\x1b[36mAvailable types :\x1b[0m string, number, date, boolean, array, objectId',
+    QUESTION_DATABASE_NAME: '\x1b[36mDatabase Name :\x1b[0m ',
     QUESTION_MODEL_NAME: '\x1b[36mModel Name :\x1b[0m ',
     QUESTION_FIELD_NAME: '\x1b[36mField Name\x1b[0m  (press <return> to stop adding fields) :',
     QUESTION_FIELD_TYPE: '\x1b[36mField Type\x1b[0m [string] : ',
     QUESTION_FIELD_REF: '\x1b[36mReference\x1b[0m  (model name referred by the objectId field eg. _member) :',
     QUESTION_GENERATE_REST: 'Generate Rest (yes/no) ? [yes] : ',
+    ERROR_DATABASE_NAME: 'Argument required : Database name',
     ERROR_MODEL_NAME: 'Argument required : Model name',
     ERROR_TYPE_ARGUMENT: 'Invalid Argument : Field type is not allowed',
     ERROR_REST_ARGUMENT: 'Argument invalid : rest',
@@ -35,6 +37,7 @@ var CLI_PHRASES = {
 program
     .version(version)
     .usage('[options]')
+    .option('-d, --database <databaseName>', 'database name')
     .option('-m, --model <modelName>', 'model name')
     .option('-f, --fields <fields>', 'model fields (name1:type1,name2:type2)')
     .option('-r, --rest', 'enable generation REST')
@@ -43,7 +46,7 @@ program
 ;
 
 (function (path) {
-    if (program.model || program.fields) {
+    if (program.database || program.model || program.fields) {
         runNonInteractiveMode(path);
     } else if(program.help) {
         runInteractiveMode(path);
@@ -51,7 +54,7 @@ program
     } else {
 
         console.log('   \x1b[36mGenerate\x1b[0m : ')
-        console.log('   kiin-gen -m user -f name,email,group_id:objectId:-user,status:boolean -r')
+        console.log('   kiin-gen -d main -m user -f name,email,group_id:objectId:-user,status:boolean -r')
         closeProgram();        
     }
 })('.');
@@ -59,6 +62,12 @@ program
 
 function runInteractiveMode (path) {
     async.series({
+            database: function (cb) {
+                askQuestion(CLI_PHRASES.QUESTION_DATABASE_NAME, isDatabaseNameParamValid, function (database) {
+                    console.log(CLI_PHRASES.AVAILABLE_TYPE);
+                    cb(null, database);
+                });
+            },
             name: function (cb) {
                 askQuestion(CLI_PHRASES.QUESTION_MODEL_NAME, isModelNameParamValid, function (name) {
                     console.log(CLI_PHRASES.AVAILABLE_TYPE);
@@ -131,15 +140,15 @@ function runInteractiveMode (path) {
 
             async.parallel([
                     function (cb) {
-                        generators.generateModel(path, results.name, results.fields, cb);
+                        generators.generateModel(path, results.database, results.name, results.fields, cb);
                     },
                     function (cb) {
                         if (results.rest !== 'yes') { return cb(); }
-                        generators.generateController(path, results.name,  cb);
+                        generators.generateController(path, results.database, results.name,  cb);
                     }            ,
                     function (cb) {
                         if (results.rest !== 'yes') { return cb(); }
-                        generators.generateService(path, results.name, results.fields, cb);
+                        generators.generateService(path, results.database, results.name, results.fields, cb);
                     }
                 ],
                 function (err, results) {
@@ -151,10 +160,10 @@ function runInteractiveMode (path) {
 }
 
 function runNonInteractiveMode(path) {
-    if (!isModelNameParamValid(program.model) || !isFieldsParamValid(program.fields)) {
+    if (!isDatabaseNameParamValid(program.database) || !isModelNameParamValid(program.model) || !isFieldsParamValid(program.fields)) {
         return closeProgram();
     }
-
+    var databaseName = program.database;
     var modelName = program.model;
     var modelFields = formatFieldsParamInArray(program.fields);
 
@@ -162,15 +171,15 @@ function runNonInteractiveMode(path) {
 
     async.parallel([
             function (cb) {
-                generators.generateModel(path, modelName, modelFields, cb);
+                generators.generateModel(path, databaseName, modelName, modelFields, cb);
             },
             function (cb) {
                 if (!program.rest) { return cb(); }
-                generators.generateController(path, modelName, cb);
+                generators.generateController(path, databaseName, modelName, cb);
             },
             function (cb) {
                 if (!program.rest) { return cb(); }
-                generators.generateService(path, modelName, modelFields, cb);
+                generators.generateService(path, databaseName, modelName, modelFields, cb);
             }
         ],
         function (err, results) {
@@ -194,6 +203,14 @@ function askQuestion(question, validate, callback) {
 function closeProgram() {
     rl.close();
     process.exit();
+}
+
+function isDatabaseNameParamValid(name) {
+    if (!name || name.trim().length === 0) {
+        consoleError(CLI_PHRASES.ERROR_DATABASE_NAME);
+        return false;
+    }
+    return true;
 }
 
 function isModelNameParamValid(name) {

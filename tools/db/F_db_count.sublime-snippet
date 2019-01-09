@@ -1,5 +1,5 @@
 <snippet>
-	<content><![CDATA[await D.${1:table}.count({${2}});]]></content>
+	<content><![CDATA[await D.${1:database}.${2:_table}.count({${3}});]]></content>
     <tabTrigger>dbcount</tabTrigger>
     <scope>source.js</scope>
     <description>db.count()</description>

@@ -9,13 +9,24 @@ var allowedFieldsTypes = {
     'array'   : Array,
     'objectId': referenceType
 };
-
+var form_type = {
+    'text':'string', 
+    'textarea':'string', 
+    'email':'string', 
+    'phone':'string', 
+    'address':'string', 
+    'number':'number', 
+    'date':'date', 
+    'select':'boolean', 
+    'text':'array', 
+    'select_id':'objectId'
+}
 function getFieldsForModelTemplate(fields) {
     var lg = fields.length - 1;
 
     var modelFields = '{' + os.EOL;
     fields.forEach(function(field, index, array) {
-        modelFields += '\t\t\'' + field.name + '\' : '+ (field.isArray ? '[' : '') + (allowedFieldsTypes[field.type]).name + (field.isArray ? ']' : '');
+        modelFields += '\t\t\'' + field.name + '\' : '+ (field.isArray ? '[' : '') + (allowedFieldsTypes[form_type[field.type]]).name + (field.isArray ? ']' : '');
         modelFields += (lg > index) ? ',' + os.EOL : os.EOL;
 
         if (field.reference) {

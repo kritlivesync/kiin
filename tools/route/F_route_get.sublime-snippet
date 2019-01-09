@@ -1,12 +1,12 @@
 <snippet>
     <content><![CDATA[.get(async(req, res) => {
     var query = {
-        ${2:where}
+        ${3:where}
     }
 
-    var data = await D.${1:arg}.findOne(query); //.populate('db filed');
+    var data = await D.${1:database}.${2:_table}.findOne(query); //.populate('db filed');
 
-    ${3}
+    ${4}
 
     res.json({
         status: true,
