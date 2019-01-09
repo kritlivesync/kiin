@@ -48,13 +48,15 @@ function generateController(path, databaseName, modelName, cb) {
     var router_delete = ft.loadTemplateSync('controller_delete.js');
     router_delete = router_delete.replace(/{databaseName}/g, databaseName);
     router_delete = router_delete.replace(/{serviceName}/g, modelName);
-    ft.createDirIfIsNotDefined(path, 'app/controllers/'+databaseName, function () {
-        ft.createDirIfIsNotDefined(path, 'app/controllers/'+databaseName+'/'+modelName, function () {
-            ft.writeFile(path + '/app/controllers/'+databaseName+'/' + modelName + '/index.js', router_index, null, ()=>{
-                ft.writeFile(path + '/app/controllers/'+databaseName+'/' + modelName + '/view.js', router_view, null, ()=>{
-                    ft.writeFile(path + '/app/controllers/'+databaseName+'/' + modelName + '/create.js', router_create, null, ()=>{
-                        ft.writeFile(path + '/app/controllers/'+databaseName+'/' + modelName + '/update.js', router_update, null, ()=>{
-                            ft.writeFile(path + '/app/controllers/'+databaseName+'/' + modelName + '/delete.js', router_delete, null, cb);
+    ft.createDirIfIsNotDefined(path, 'app/controllers/api', function () {
+        ft.createDirIfIsNotDefined(path, 'app/controllers/api/'+databaseName, function () {
+            ft.createDirIfIsNotDefined(path, 'app/controllers/api/'+databaseName+'/'+modelName, function () {
+                ft.writeFile(path + '/app/controllers/api/'+databaseName+'/' + modelName + '/index.js', router_index, null, ()=>{
+                    ft.writeFile(path + '/app/controllers/api/'+databaseName+'/' + modelName + '/view.js', router_view, null, ()=>{
+                        ft.writeFile(path + '/app/controllers/api/'+databaseName+'/' + modelName + '/create.js', router_create, null, ()=>{
+                            ft.writeFile(path + '/app/controllers/api/'+databaseName+'/' + modelName + '/update.js', router_update, null, ()=>{
+                                ft.writeFile(path + '/app/controllers/api/'+databaseName+'/' + modelName + '/delete.js', router_delete, null, cb);
+                            });
                         });
                     });
                 });
