@@ -34,6 +34,18 @@ exports.init = function(config) {
                 if (err) throw err
                 console.log(`> Ready on ${C.domain.www}`)
             })
-
         })
+}
+exports.boot = function(config) {
+            global.C = config; //config
+            global.L = {}; //local session
+            global.D = {}; //data base
+            global.M = {}; //middle where
+            global.S = {}; //service
+            global.R = require('./init/cache.js'); //redis
+            global.F = require('./init/funcs.js'); //function
+
+            require('./init/models.js'); // model
+            require('./init/middles.js'); // middle
+            require('./init/services.js'); // service
 }
