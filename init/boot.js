@@ -5,6 +5,7 @@ module.exports = function(app) {
         compression = require('compression'),
         RedisStore = require('connect-redis')(Session),
         swig = require('swig'),
+        json2xls = require('json2xls'),
         multer = require('multer');
 
     L.session  = Session({
@@ -26,6 +27,7 @@ module.exports = function(app) {
     app.use(bodyParser.json({ limit: '50mb' }));
     app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
     app.use( L.session);
+    app.use(json2xls.middleware);
 
     app.use((req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*");
